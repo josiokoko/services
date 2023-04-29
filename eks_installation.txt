@@ -1,0 +1,87 @@
+Services and Networking in k8s
+
+- Setting up a k8s cluster:
+		- kubeadm
+		- kOps
+		- EKS => AWS Elastic Kubernetes Services
+
+		kOps vs EKS
+		
+		(1) kOps
+			- You manage your control plane 
+			- It's very easy to set up
+			- Cost (largely comparable to EKS)
+			- It's been around for longer
+			- Degree of control on your cluster
+
+		(2) EKS
+			- AWS manages your control plane 
+			- Extremely easy to set up
+			- Relatively new tool 
+			- Cost (comparable)
+			- Less control
+
+
+- Container Services in AWS
+	- Elastic Container Registry (ECR) => aws ecr
+	- Elastic Container Services (ECS) => aws ecs
+		- EC2 ECS
+		- Fargate ECS
+	- Elastic Kubernetes Services (EKS) => aws eks
+
+
+Elastic Kubernetes Services (EKS)
+
+	Set Up Requirements:
+		
+	(1) awscli version 2
+		
+		aws --version
+
+		aws eks list-clusters
+
+	(2) Configure AWS CLI
+		- Create IAM user with necessary access/permission
+
+	(3) Install eksctl
+		
+		Windows
+			choco install -y eksctl
+
+		MacOS
+			brew tap weaveworks/tap
+			brew install weaveworks/tap/eksctl
+
+		
+		eksctl version
+
+	(4) Install kubectl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
