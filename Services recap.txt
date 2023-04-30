@@ -1,0 +1,29 @@
+Services
+
+	ClusterIP => default
+	NodePort
+	LoadBalancer => cloud provider specific
+
+NodePort:
+	Deploy nginx app
+	Expose it externally to users
+
+
+LoadBalancer:
+	Deploy prometheus (docker image: prom/prometheus)
+	Expose on port 9090
+	Please, create a dedicated namespace for the workload
+
+		namespace:
+			prom-ns
+
+			kubectl create ns prom-ns
+			kubectl create ns prom-ns -o yaml --dry-run=client > prom-ns.yaml
+		
+		Deploy prometheus
+			kubectl create deployment prom --image=prom/prometheus --replicas=2 -n=prom-ns --port=9090 
+			kubectl create deployment prom --image=prom/prometheus --replicas=2 -n=prom-ns --port=9090 -o yaml --dry-run=client > prom.yaml
+
+
+		Service:
+			kubectl expose deploy prom-deploy -n prom-ns --port=9090 --target-port=9090 --type=LoadBalancer -o yaml --dry-run=client > prom-svc.yaml

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: prom-deploy
+  name: prom-deploy
+  namespace: prom-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - image: bitnami/prometheus:latest
+        name: prometheus
+        ports:
+        - containerPort: 9090
+        resources: {}
+status: {}

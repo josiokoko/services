@@ -1,0 +1,59 @@
+Services and Networking
+=========================
+
+Container to Container communication within a Pod
+	- Different port numbers
+	- Shared resources (storage, virtual IP address; network)
+	- Inter-Process communication
+	- localhost
+
+Pod-to-Pod Communication	
+	- By default, all Pods in a cluster can communicate with other Pods within the cluster
+	- Default behaviour raises security question
+	- Network Policy can be used to define rules that control traffic from one Pod to another 
+
+
+Users-to-Pods communication
+	- Services:
+		- abstraction layer on top of Pods
+		- Assign a fixed IP address to front all the Pod
+	
+	- Service Types:
+
+		- ClusterIP:
+			- default
+			- internal access only
+
+		- NodePort:
+			- Allocate a specific nodePort
+			- <node IP>:<nodePort>
+				44.201.22.219:30655
+
+		- LoadBalancer:
+			- Only implemented in public cloud
+
+
+Ways to create a service:
+	- Imperative 
+	- Declaration
+
+Imperatively:
+
+	kubectl expose po nginx --port=80
+
+	kubectl expose deployment my-nginx --port=80 --type=NodePort
+	
+ 	kubectl expose deployment my-nginx --port=80 --type=LoadBalancer
+
+
+
+
+
+
+
+
+
+
+
+
+

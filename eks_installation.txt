@@ -58,11 +58,34 @@ Elastic Kubernetes Services (EKS)
 	(4) Install kubectl
 
 
+EKS installation options:
+	
+	(1) Terraform
+	(2) eksctl
+			- Use YAML file
+			- CLI
 
 
+	eksctl create cluster \
+		--name svc-eks-app \
+		--node-type t2.medium \
+		--nodes 3 \
+		--region=us-east-1 \
+		--zones=us-east-1a,us-east-1b,us-east-1d
+
+eksctl create cluster --name=svc-eks-app --node-type=t2.medium --nodes=3 --region=us-east-1 --zones=us-east-1a,us-east-1b,us-east-1d
+
+	Verification:
+		eksctl get cluster --name raycoy-eks-app --region us-east-1
+
+		kubectl get nodes
 
 
+	Delete: 
+ 		eksctl delete cluster --name svc-eks-app --region us-east-1
 
+		NB: Please, let the command finish! Let it do its job!
+			Terminating prematurely will leave dangling resources.
 
 
 

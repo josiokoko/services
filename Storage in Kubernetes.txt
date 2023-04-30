@@ -1,0 +1,62 @@
+Storage in Kubernetes
+	- Sharing of data by containers in a Pod
+	- Sharing of data by Pods 
+	- Persisting data beyond the life cycle of a Pod
+
+Volumes:
+	(1) Ephemeral Volumes:
+		- volume life cycle = the Pod life cycle
+		- If a container restarts, the new container will have access to the same volume
+		- Once Pod terminates, the volume is gone!
+
+	(2) Persistent Volume 
+		- Solves the challenges with ephemeral volume
+
+Type of Volumes:
+	(1) emtyDir()
+		- an empty directory that is created when a Pod is assigned to a node
+		- Only exists as long as the Pod exits
+		- Containers can write to and read from it 
+		- the same emptyDir() volume can be mounted on different path for different containers
+
+	(11) hostPath:
+		- Use to mount file or a directory from the host node's filesystem to a Pod
+
+	(111) Persistent Volume:
+			- Static PV
+				- PersistentVolume object
+				- PersistentVolumeClaim object
+				- Create volumes and volumeMounts
+
+			- Dynamic PV (Using Storage Class)
+				- Storage Class
+				- PersistentVolumeClaim object
+				- Create volumes and volumeMount
+		
+
+
+Scenario (Logging):
+	- Two apps
+		- busybox app and outputting date log every 5 seconds
+		- httpd app storing the date log
+	
+	- Create a multi-container Pod running the two apps.
+
+		shared-emptydir-volume.yaml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
